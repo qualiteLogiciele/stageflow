@@ -1,0 +1,14 @@
+# AI_LOG — Hasnae
+
+## 2026-11-02 — Installation initiale
+- Compte OpenRouter, clé, confidentialité, OpenCode installés
+- Modèle configuré : openrouter/cohere/north-mini-code:free
+
+## 2026-11-21 — Changement de modèle
+Assistant : OpenCode 1.19.5
+- Incident : cohere/north-mini-code:free n'est plus disponible sur OpenRouter (erreur au lancement d'OpenCode)
+- Incident : nvidia/nemotron-3-super-120b-a12b:free (exemple du guide) aussi indisponible (erreur 404)
+- Vérification : clé OK (free tier, 50 req/jour), liste des modèles :free consultée
+- Nouveau choix du groupe : nemotron-3-ultra-550b-a55b:free (model) + nemotron-3.5-lightning:free (small_model), en attente de validation prof
+- Test OpenCode OK (coût 0 $)
+- requetes_seance: ~5 | incidents_429: 0 | cout_seance: 0 $
