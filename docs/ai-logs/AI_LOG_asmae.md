@@ -82,16 +82,31 @@ force push et suppression bloqués), après passage en admin par Chaymae
 - cout_seance: 0 $
 - remarque : le quota de 50 req/jour est épuisé en une séance d'environ 1 h 30 avec 6 demandes (≈ 8,5 requêtes par demande) ; à signaler à l'équipe pour le choix de la formule
 
-## 2026-11-27 — Séance 3 : corrections CI de sécurité et préparation de la PR (≈ [9h23])
+## 2026-11-27 — Séance 3 : corrections CI de sécurité et préparation de la PR (≈ 9h23-[heure de fin])
 Outil : BMAD 6.12.4 (/bmad-build) — Assistant : OpenCode 1.19.5 — Modèle : openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
 Session OpenCode : « bmad-build skill setup » (reprise de la séance 2 avec `opencode -c`)
 
-Demandes à l'agent : 1
+Demandes à l'agent : 2
 1. Renvoi des 3 corrections refusées la veille pour quota :
    - .github/dependabot.yml : écosystème "docker" → "docker-compose"
    - .github/workflows/security.yml : filtre `branches: ['*']` supprimé du déclencheur pull_request
    - .github/workflows/security.yml : permission `pull-requests: read` et `GITLEAKS_ENABLE_COMMENTS: false` ajoutées
    Résultat : les 3 corrections appliquées du premier coup, aucun autre fichier modifié ; YAML valides (vérification par relecture)
+
+Commits et PR (manuels, sans agent) :
+- 4 commits séparés par sujet sur setup/devops-config (config, docker, ci, docs), `.env` vérifié ignoré (git check-ignore)
+- PR setup/devops-config → main ouverte, relecture demandée à Chaymae (ruleset protect-main : 1 approbation requise, appliqué)
+
+Échec CI sur la PR : job security / Secret Detection en échec après 7 s
+- Cause : « [qualiteLogiciele] is an organization. License key is required. » — gitleaks/gitleaks-action@v2 exige
+  une licence (GITLEAKS_LICENSE) pour les dépôts d'organisation ; aucun secret détecté
+- Décision DevOps : utiliser le binaire gitleaks en ligne de commande (MIT, sans clé) plutôt qu'une licence
+  liée à un compte personnel → aucun secret supplémentaire à gérer
+- « Watch and fix » de Copilot proposé par GitHub : non utilisé (autre assistant que celui du groupe)
+
+2. Remplacement de l'action par le binaire : téléchargement de gitleaks v8.30.1 épinglée depuis les releases GitHub,
+   exécution `./gitleaks git --redact --verbose .`, permission pull-requests: read retirée (inutile), contents: read conservée.
+   Résultat conforme du premier coup, YAML valide (vérification par relecture) ; résultat en CI : [à relever]
 
 Interventions manuelles : 0 ligne modifiée à la main
 
