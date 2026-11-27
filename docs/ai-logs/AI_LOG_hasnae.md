@@ -12,3 +12,8 @@ Assistant : OpenCode 1.19.5
 - Nouveau choix du groupe : nemotron-3-ultra-550b-a55b:free (model) + nemotron-3.5-lightning:free (small_model), en attente de validation prof
 - Test OpenCode OK (coût 0 $)
 - requetes_seance: ~5 | incidents_429: 0 | cout_seance: 0 $
+
+## 2026-11-25 — Répartition des rôles
+- Rôle attribué (tirage) : Responsable qualité
+- Agents BMAD supervisés : QA, revue de code
+- requetes_seance: 0 | cout_seance: 0 $
