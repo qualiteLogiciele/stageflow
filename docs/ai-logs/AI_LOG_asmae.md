@@ -86,7 +86,7 @@ force push et suppression bloqués), après passage en admin par Chaymae
 Outil : BMAD 6.12.4 (/bmad-build) — Assistant : OpenCode 1.19.5 — Modèle : openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
 Session OpenCode : « bmad-build skill setup » (reprise de la séance 2 avec `opencode -c`)
 
-Demandes à l'agent : 2
+Demandes à l'agent : 3
 1. Renvoi des 3 corrections refusées la veille pour quota :
    - .github/dependabot.yml : écosystème "docker" → "docker-compose"
    - .github/workflows/security.yml : filtre `branches: ['*']` supprimé du déclencheur pull_request
@@ -106,7 +106,15 @@ Commits et PR (manuels, sans agent) :
 
 2. Remplacement de l'action par le binaire : téléchargement de gitleaks v8.30.1 épinglée depuis les releases GitHub,
    exécution `./gitleaks git --redact --verbose .`, permission pull-requests: read retirée (inutile), contents: read conservée.
-   Résultat conforme du premier coup, YAML valide (vérification par relecture) ; résultat en CI : [à relever]
+   Résultat conforme du premier coup, YAML valide (vérification par relecture).
+   CI après push : gitleaks fonctionne (8 commits analysés, 1,70 Mo) mais échoue avec « leaks found: 1 »
+   - RuleID generic-api-key dans _bmad/_config/files-manifest.csv ligne 48 (commit 6ef1eb6, installation BMAD)
+   - Analyse : fausse alerte — la ligne contient l'empreinte SHA-256 du fichier bmad-ux/assets/key-screens.md
+     (manifeste des fichiers installés par BMAD), pas un secret ; aucune révocation nécessaire
+   - Décision : exclure le fichier entier plutôt que la seule alerte (empreintes regénérées à chaque installation de BMAD)
+3. Création de .gitleaks.toml (règles par défaut conservées via [extend] useDefault = true + exclusion justifiée
+   du chemin ^_bmad/_config/files-manifest\.csv$). Contenu conforme, TOML valide (vérification par relecture) ;
+   résultat en CI : [à relever]
 
 Interventions manuelles : 0 ligne modifiée à la main
 
