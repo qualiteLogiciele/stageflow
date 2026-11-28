@@ -1,0 +1,22 @@
+# --- Secrets (ne jamais versionner) ---
+.env
+*.env
+.env.*
+!.env.example
+
+# --- Build Java / Node ---
+target/
+build/
+dist/
+node_modules/
+*.log
+
+# --- IDE / OS ---
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# --- BMAD : configuration personnelle de chaque membre ---
+_bmad/config.user.toml

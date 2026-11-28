@@ -1,0 +1,8 @@
+# Configuration gitleaks du projet StageFlow
+# Règles par défaut de gitleaks, plus les exclusions justifiées ci-dessous.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Manifeste BMAD : empreintes SHA-256 des fichiers installés, pas des secrets"
+paths = ['''^_bmad/_config/files-manifest\.csv$''']
