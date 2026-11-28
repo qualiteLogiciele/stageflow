@@ -25,3 +25,6 @@ Assistant : OpenCode 1.19.5
 - Revue qualité de la PR #2 (DevOps) : modèle, secrets, .gitignore vérifiés → approuvée
 - requetes_seance: 0 | cout_seance: 0 $
 
+## 2026-11-28 — Test de BMAD dans OpenCode
+- Test de /bmad-help avec nemotron-3-ultra:free → OK
+- requetes_seance: 7 | incidents_429: 0 | cout_seance: 0 $
