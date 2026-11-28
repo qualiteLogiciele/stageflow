@@ -18,7 +18,7 @@ services:
       retries: 10
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0.8
+    image: quay.io/keycloak/keycloak:26.8.2-3
     container_name: stageflow-keycloak
     command: start-dev --import-realm
     environment:
