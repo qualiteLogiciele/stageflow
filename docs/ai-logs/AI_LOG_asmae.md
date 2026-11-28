@@ -82,7 +82,7 @@ force push et suppression bloqués), après passage en admin par Chaymae
 - cout_seance: 0 $
 - remarque : le quota de 50 req/jour est épuisé en une séance d'environ 1 h 30 avec 6 demandes (≈ 8,5 requêtes par demande) ; à signaler à l'équipe pour le choix de la formule
 
-## 2026-11-27 — Séance 3 : corrections CI de sécurité et préparation de la PR (≈ 9h23-[heure de fin])
+## 2026-11-27 — Séance 3 : corrections CI de sécurité et préparation de la PR (≈ 9h23-11h00, puis 23h50-00h06 pour les actions GitHub manuelles)
 Outil : BMAD 6.12.4 (/bmad-build) — Assistant : OpenCode 1.19.5 — Modèle : openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
 Session OpenCode : « bmad-build skill setup » (reprise de la séance 2 avec `opencode -c`)
 
@@ -113,13 +113,19 @@ Commits et PR (manuels, sans agent) :
      (manifeste des fichiers installés par BMAD), pas un secret ; aucune révocation nécessaire
    - Décision : exclure le fichier entier plutôt que la seule alerte (empreintes regénérées à chaque installation de BMAD)
 3. Création de .gitleaks.toml (règles par défaut conservées via [extend] useDefault = true + exclusion justifiée
-   du chemin ^_bmad/_config/files-manifest\.csv$). Contenu conforme, TOML valide (vérification par relecture) ;
-   résultat en CI : [à relever]
+   du chemin ^_bmad/_config/files-manifest\.csv$). Contenu conforme, TOML valide (vérification par relecture).
+   CI après push : security / Secret Detection au vert (4 s) — « All checks have passed » sur la PR ;
+   fusion en attente de l'approbation de Chaymae
+
+Actions manuelles en fin de journée (sans agent) :
+- Relecture demandée à Chaymae sur la PR (Reviewers), commentaire de mise à jour et message à l'équipe
+- Ruleset protect-main complété : « Require status checks to pass » avec le check obligatoire Secret Detection
+  (source GitHub Actions) → plus aucune fusion possible sur main avec la CI rouge
 
 Interventions manuelles : 0 ligne modifiée à la main
 
 - modele: openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
-- requetes_seance:            # lu sur la page Activity
+- requetes_seance: 15 (Activity, 27/11 : Nemotron 3 Ultra 15, Nemotron 3.5 Lightning 0)
 - incidents_429: 0
 - attente_min: 0
 - cout_seance: 0 $
