@@ -17,3 +17,9 @@ Assistant : OpenCode 1.19.5
 - Rôle attribué (tirage) : Responsable qualité
 - Agents BMAD supervisés : QA, revue de code
 - requetes_seance: 0 | cout_seance: 0 $
+
+## 2026-11-28 — Rôle qualité : DoD, modèle de critères et AGENTS.md
+- Création de docs/qualite/definition-of-done.md et template-criteres.md, basés uniquement sur l'énoncé (rédigés avec l'aide de Claude, relus par moi)
+- Création de AGENTS.md : règles lues automatiquement par l'agent OpenCode (respect de la DoD, du modèle de critères, scénarios enseignant non modifiés, données fictives, pas de commit direct sur main)
+- PR #4 ouverte pour validation par l'équipe
+- requetes_seance: 0 | cout_seance: 0 $
